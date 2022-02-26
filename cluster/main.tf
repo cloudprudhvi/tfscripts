@@ -32,3 +32,5 @@ resource "aws_security_group" "default1" {
       cidr_blocks = ["0.0.0.0/0"]
   }
 }
+# adding new security group
+#checking the diff
