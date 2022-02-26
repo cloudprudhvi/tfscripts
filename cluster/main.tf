@@ -21,3 +21,14 @@ resource "aws_security_group" "default" {
       cidr_blocks = ["0.0.0.0/0"]
   }
 }
+resource "aws_security_group" "default1" {
+  name_prefix = "${local.env}-uptime"
+  #vpc_id = "${var.vpc_id == "" ? data.aws_vpc.selected.id[0] : var.vpc_id}"
+  vpc_id = "${data.aws_vpc.selected.id}"
+  egress {
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+}
