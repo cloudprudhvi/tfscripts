@@ -11,6 +11,15 @@ terraform {
     }
   }
 }
+terraform {
+  backend "s3" {
+    bucket = "statefile-bucket-56"
+    key    = "dev/terraform.tfstate"
+    region = "us-east-1"
+    dynamodb_table = "statefile"
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
   profile = "default"
