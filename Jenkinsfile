@@ -4,7 +4,10 @@ pipeline {
         stage('Terraform Initialize') {
             dir('us-east-1')
             steps {
-                sh 'terraform init'
+                dir('us-east-1') {
+                    sh 'terraform init'
+                }            
+               // sh 'terraform init'
             }
         }
         stage('Terraform Plan') {
