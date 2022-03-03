@@ -12,7 +12,9 @@ pipeline {
             }
         }
         stage('Terraform Apply') {
-            input 'do you want to continue'
+           input {
+                message "Should we continue?"
+            }
             steps {
                 sh 'terraform apply --auto-approve'
             }
