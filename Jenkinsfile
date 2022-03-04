@@ -2,7 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Terraform Initialize') {
-            dir('us-east-1')
             steps {
                 dir('us-east-1') {
                     sh 'terraform init'
@@ -12,7 +11,9 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan'
+                dir('us-east-1') {
+                    sh 'terraform plan'
+                }
             }
         }
         stage('Terraform Apply') {
@@ -20,7 +21,9 @@ pipeline {
                 message "Should we continue?"
             }
             steps {
-                sh 'terraform apply --auto-approve'
+                 dir('us-east-1') {
+                    sh 'terraform apply --auto-approve'
+                }
             }
         }
       
