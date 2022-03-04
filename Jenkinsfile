@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'amzlinux'
+    }
     stages {
         stage('Terraform Initialize') {
             steps {
